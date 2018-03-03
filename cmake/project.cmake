@@ -1,0 +1,7 @@
+include(platform)
+include(buildtype)
+include(color)
+include(macros)
+include(module)
+include(compiler)
+include(unit_tests)
