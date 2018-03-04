@@ -13,18 +13,6 @@ matrix:
    - env: COMPILER=g++-7
      addons: { apt: { packages: ["g++-7", "valgrind"], sources: ["ubuntu-toolchain-r-test"] } }
 
-
-#addons:
-#  apt:
-#   sources:
-#      - ubuntu-toolchain-r-test
-#      - llvm-toolchain-trusty-5.0
-#   packages:
-#      - valgrind
-#      - libboost-all-dev
-#      - gcc-7
-#      - clang-5.0
-
 before_install:
  # Install a supported cmake version (>= 3.4.3)
   - wget -O cmake.sh https://cmake.org/files/v3.11/cmake-3.11.0-rc1-Linux-x86_64.sh
