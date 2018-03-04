@@ -23,6 +23,8 @@ before_install:
   - cmake ..
   - make
   - sudo make install
+  - cd ..
+  - cd ..
 
 compiler:
   - gcc
