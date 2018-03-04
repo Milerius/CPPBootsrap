@@ -1,4 +1,28 @@
+dist: artful
 language: cpp
+
+sudo: false
+addons:
+  apt:
+   sources:
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-trusty-5.0
+
+   packages:
+      - valgrind
+      - libboost-all-dev
+      - gcc-7
+      - clang-5.0
+
+before_install:
+  - pip install --user cpp-coveralls
+  - git clone https://github.com/google/googletest
+  - cd googletest
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - make install
 
 compiler:
   - gcc
@@ -9,4 +33,4 @@ before_script:
   - cd build
   - cmake ..
 
-script: make && make test
+script: make
