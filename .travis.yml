@@ -1,13 +1,11 @@
-dist: artful
 language: cpp
+sudo: required
 
-sudo: false
 addons:
   apt:
    sources:
       - ubuntu-toolchain-r-test
       - llvm-toolchain-trusty-5.0
-
    packages:
       - valgrind
       - libboost-all-dev
@@ -15,6 +13,9 @@ addons:
       - clang-5.0
 
 before_install:
+ # Install a supported cmake version (>= 3.4.3)
+  - wget -O cmake.sh https://cmake.org/files/v3.11/cmake-3.11.0-rc1-Linux-x86_64.sh
+  - sudo sh cmake.sh --skip-license --exclude-subdir --prefix=/usr/local
   - pip install --user cpp-coveralls
   - git clone https://github.com/google/googletest
   - cd googletest
@@ -22,11 +23,9 @@ before_install:
   - cd build
   - cmake ..
   - make
-  - make install
-
-compiler:
-  - gcc
-  - clang
+  - sudo make install
+  - cd ..
+  - cd ..
 
 before_script:
   - mkdir build
