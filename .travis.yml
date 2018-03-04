@@ -6,24 +6,12 @@ os: linux
 matrix:
   include:
     # Clang 5.0
-    - env: COMPILER=clang++-5.0
+    - env: UNIT_TESTS=true COMPILER=clang++-5.0 BOOST_VERSION=default ENABLE_MEMCHECK=true
       addons: &defaults { apt: { packages: ["clang-5.0", "valgrind"], sources: ["ubuntu-toolchain-r-test", "llvm-toolchain-trusty-5.0"] } }
 
-   # GCC 7
-   - env: COMPILER=g++-7
-     addons: { apt: { packages: ["g++-7", "valgrind"], sources: ["ubuntu-toolchain-r-test"] } }
-
-
-#addons:
-#  apt:
-#   sources:
-#      - ubuntu-toolchain-r-test
-#      - llvm-toolchain-trusty-5.0
-#   packages:
-#      - valgrind
-#      - libboost-all-dev
-#      - gcc-7
-#      - clang-5.0
+    # GCC 7
+    - env: UNIT_TESTS=true COMPILER=g++-7 BOOST_VERSION=default ENABLE_MEMCHECK=true
+      addons: { apt: { packages: ["g++-7", "valgrind"], sources: ["ubuntu-toolchain-r-test"] } }
 
 before_install:
  # Install a supported cmake version (>= 3.4.3)
